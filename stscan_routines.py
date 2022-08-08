@@ -19,6 +19,17 @@ angVel=0
 fwid=16
 fhei=16
 
+## output
+numLEDs = 16
+
+def posRender( idx ):
+    pass
+
+
+def stripRender():
+    for idx in range( numLEDS ):
+        posRender( idx )
+        
 
 def init():
     cx=0
