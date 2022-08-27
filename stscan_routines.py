@@ -1,65 +1,59 @@
 
+
 import math
 
-## scan position
-# orientation
-cx=0
-cy=0
-ang=0
-dx=0
-dy=0
-
-scale = 1
-
-## dynamics
-lineVel=1
-angVel=0
-
-# sequencer
-
-
-# repeat field
-fwid=16
-fhei=16
-
-# super field
-sfwid=100
-sfhei=100
-
-## output
-numLEDs = 16
-
-def posRender( idx ):
-    pass
-
-
-def stripRender():
-    for idx in range( numLEDS ):
-        posRender( idx )
-        
-
-def init():
-    cx=0
-    cy=0
-    ang=0
-    dx=0
-    dy=0
-
-def angDecompose( ang ):
-    dx = math.cos( ang )
-    dy = math.sin( ang )
-    return (dx,dy)
-
-def angSet( angIn ):
-    angIn = ang
-    dx,dy = angDecompose( ang )
+class StripScanner:
+    def __init__(self):
     
-def step():
-    cx += dx
-    cy += dy
+        ## scan position
+        # orientation
+        self.cx=0
+        self.cy=0
+        self.ang=0
+        self.dx=0
+        self.dy=0
+        self.scale = 1
+
+        ## dynamics
+        self.lineVel=1
+        self.angVel=0
+
+        # sequencer
+
+        # repeat field
+        self.fwid=16
+        self.fhei=16
+
+        # super field
+        self.sfwid=100
+        self.sfhei=100
+
+        ## output
+        self.numLEDs = 16
+
+    def posRender( self, idx ):
+        pass
 
 
-def dump():
-    print( f'ang:{ang},dx,dy:{dx}{dy}' )
-    print( f'cx,cy,{cx},{cy}')
+    def stripRender(self):
+        for idx in range( numLEDS ):
+            posRender( idx )
+        
+    def angDecompose( self, ang ):
+        self.dx = math.cos( ang )
+        self.dy = math.sin( ang )
+        return (self.dx,self.dy)
+
+    def angSet( self, ang ):
+        self.ang = ang
+        self.dx,self.dy = self.angDecompose( ang )
+    
+    def step( self ):
+        self.cx += self.dx
+        self.cy += self.dy
+
+
+    def dump( self ):
+        print( f'ang:{self.ang},dx,dy:{self.dx}{self.dy}' )
+        print( f'cx,cy,{self.cx},{self.cy}')
     

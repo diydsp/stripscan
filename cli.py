@@ -2,11 +2,11 @@
 
 import stscan_routines as ss
 
-ss.init()
+rend1 = ss.StripScanner()
 
-ss.angSet( 45 * 3.14159 / 180 )
-ss.dump()
+rend1.angSet( 45 * 3.14159 / 180 )
+rend1.dump()
 
-ss.step()
-ss.dump()
+rend1.step()
+rend1.dump()
 
