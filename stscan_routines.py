@@ -1,10 +1,13 @@
 
+import math
 
 ## scan position
 # orientation
 cx=0
 cy=0
 ang=0
+dx=0
+dy=0
 
 scale = 1
 
@@ -12,12 +15,16 @@ scale = 1
 lineVel=1
 angVel=0
 
-## sequencer
+# sequencer
 
 
-## field
+# repeat field
 fwid=16
 fhei=16
+
+# super field
+sfwid=100
+sfhei=100
 
 ## output
 numLEDs = 16
@@ -35,10 +42,24 @@ def init():
     cx=0
     cy=0
     ang=0
+    dx=0
+    dy=0
 
+def angDecompose( ang ):
+    dx = math.cos( ang )
+    dy = math.sin( ang )
+    return (dx,dy)
+
+def angSet( angIn ):
+    angIn = ang
+    dx,dy = angDecompose( ang )
+    
 def step():
-    pass
+    cx += dx
+    cy += dy
 
 
-def blank():
-    pass
+def dump():
+    print( f'ang:{ang},dx,dy:{dx}{dy}' )
+    print( f'cx,cy,{cx},{cy}')
+    
